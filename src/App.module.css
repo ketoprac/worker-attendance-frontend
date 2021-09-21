@@ -15,7 +15,7 @@
 }
 
 .attendance__container {
-  height: 75vh;
+  min-height: 100vh;
   background-color:#f7f4f6;
   padding: 16px;
   z-index: 0;
@@ -65,8 +65,13 @@
 }
 
 .today__container {
+  background-color: whitesmoke;
   margin-top: 16px;
   margin-bottom: 8px;
+}
+
+.today__container > ul > h3 {
+  margin: 32px 16px 16px 16px;
 }
 
 .today__container > ul > li {
@@ -77,11 +82,10 @@
   list-style: none;
 }
 
-.today__container > ul > h3 {
-  padding: 8px;
-  text-align: center;
+.today__container > ul > li:nth-child(2) {
+  border-top: 1px solid lightgray;
 }
 
-.today__container > ul > li > h3 {
+.today__container > ul > li > .status {
   flex: 1;
 }

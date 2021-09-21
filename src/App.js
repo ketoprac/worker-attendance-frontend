@@ -4,6 +4,9 @@ import styles from "./App.module.css";
 import Button from "./components/Button";
 import Avatar from "./assets/images/avatar.jpg";
 import Navbar from "./components/Navbar";
+import Clock from "react-live-clock";
+import "moment-timezone";
+import "react-moment";
 
 function App() {
   const [attendances, setAttendances] = useState([]);
@@ -28,7 +31,7 @@ function App() {
 
   const [clock, setClock] = useState(false);
 
-  console.log(Object.keys(attendances));
+  // console.log(Object.values(attendances));
   const days = [
     "Sunday",
     "Monday",
@@ -61,12 +64,11 @@ function App() {
     months[today.getMonth()] +
     " " +
     today.getFullYear();
-
   const hours = today.getHours() + ":" + today.getMinutes();
 
   const clockIn = () => {
     axios
-      .post(URL, {
+      .post(URL, { 
         nik: "12345678",
         nama: "John Doe",
         status: "Clock in",
@@ -118,6 +120,9 @@ function App() {
           </div>
           <div className={styles.clock__container}>
             <header>
+              <h1>
+            <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Pacific'} />
+              </h1>
               <h4>{day}</h4>
             </header>
             <h3>09:00 AM - 05:00 PM</h3>
@@ -137,11 +142,10 @@ function App() {
           <div className={styles.today__container}>
             <ul>
               <h3>Attendance History</h3>
-              {Object.keys(attendances).map((attendance, index) => (
+              {Object.values(attendances).map((attendance, index) => (
                 <li key={index}>
-                  <h3>{attendances[attendance.day]}</h3>
-                  {/* <p>{attendance.day}</p> */}
-                  {/* <p>{attendance.hours}</p> */}
+                  <h4 className={styles.status}>{attendance.status}</h4>
+                  <h4>{attendance.day} {attendance.hours}</h4>
                 </li>
               ))}
             </ul>
