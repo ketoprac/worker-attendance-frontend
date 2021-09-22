@@ -121,7 +121,8 @@ function App() {
           <div className={styles.clock__container}>
             <header>
               <h1>
-            <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Pacific'} />
+                {/* Live Clock */}
+            <Clock format={'HH:mm:ss'} ticking={true} timezone={'Asia/Jakarta'} />
               </h1>
               <h4>{day}</h4>
             </header>
