@@ -5,10 +5,10 @@ import styles from "./Login.module.css";
 const Login = () => {
   return (
     <>
-      <Navbar />
+    <Navbar />
       <div className={styles.container}>
         <form>
-          <h2>Login</h2>
+          <h2>Sign in</h2>
           <div className={styles.input__container}>
             <label for="email">Email: </label>
             <input name="email" type="text" />
@@ -18,6 +18,7 @@ const Login = () => {
             <input name="password" type="password" />
           </div>
           <Button variant="primary" title="Login" />
+          <Button variant="tertiary" title="Forgot password?" />
         </form>
       </div>
     </>
