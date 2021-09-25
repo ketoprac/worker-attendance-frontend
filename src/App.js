@@ -7,9 +7,11 @@ import Navbar from "./components/Navbar";
 import Clock from "react-live-clock";
 import "moment-timezone";
 import "react-moment";
+import useGeoLocation from "./hooks/useGeoLocation";
 
 function App() {
   const [attendances, setAttendances] = useState([]);
+  const location = useGeoLocation();
   const URL =
     "https://worker-attendance-app-default-rtdb.asia-southeast1.firebasedatabase.app/absence.json";
 
@@ -128,6 +130,8 @@ function App() {
             </header>
             <h3>09:00 AM - 05:00 PM</h3>
             <p>Office Hours</p>
+            <p>Your Location</p>
+            <p>{location.loaded ? JSON.stringify(location) : "Location data not available yet"}</p>
             <p>Jl. MH. Thamrin No. 69, Jakarta Selatan, DKI Jakarta</p>
             <Button
               onClick={() => clockIn()}
