@@ -8,8 +8,14 @@ import Clock from "react-live-clock";
 import "moment-timezone";
 import "react-moment";
 import useGeoLocation from "./hooks/useGeoLocation";
+import Map from "./components/Map";
 
 function App() {
+  // const officeLocation = {
+  //   address: '1600 Amphitheatre Parkway, Mountain View, california.',
+  //   lat: 37.42216,
+  //   lng: -122.08427,
+  // }
   const [attendances, setAttendances] = useState([]);
   const location = useGeoLocation();
   const URL =
@@ -131,7 +137,9 @@ function App() {
             <h3>09:00 AM - 05:00 PM</h3>
             <p>Office Hours</p>
             <p>Your Location</p>
-            <p>{location.loaded ? JSON.stringify(location) : "Location data not available yet"}</p>
+            <p>{location.loaded ? JSON.stringify(location.coordinates) : "Location data not available yet"}</p>
+            <Map location={location} zoomLevel={17} />
+            <p>Office Location</p>
             <p>Jl. MH. Thamrin No. 69, Jakarta Selatan, DKI Jakarta</p>
             <Button
               onClick={() => clockIn()}
