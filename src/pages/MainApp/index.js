@@ -108,7 +108,6 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <div className={styles.container}>
         <div className={styles.attendance__container}>
           <div className={styles.profile__container}>

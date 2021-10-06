@@ -5,7 +5,6 @@ import styles from "./Login.module.css";
 const Login = () => {
   return (
     <>
-    <Navbar />
       <div className={styles.container}>
         <form>
           <h2>Sign in</h2>

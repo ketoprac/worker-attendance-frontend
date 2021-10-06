@@ -5,6 +5,7 @@ import Map from "../../components/Map";
 import Navbar from "../../components/Navbar";
 import styles from "./AttendanceMap.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AttendanceMap = () => {
   const [currentLocation, setCurrentLocation] = useState("");
@@ -32,7 +33,6 @@ const AttendanceMap = () => {
 
   return (
     <>
-    <Navbar />
     <div className={styles.container}>
       <div className={styles.location__container}>
       <h3>Clock In</h3>
@@ -49,7 +49,7 @@ const AttendanceMap = () => {
       <div className={styles.map__container}>
         <p>You are in Office Area, now you are allowed to Clock In</p>
       </div>
-        <Button variant="primary block" title="Clock In" />
+        <Link to="/" ><Button variant="primary block" title="Clock In" /></Link>
       </div>
     </div>
     </>

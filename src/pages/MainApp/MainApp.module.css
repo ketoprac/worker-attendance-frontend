@@ -1,0 +1,97 @@
+.avatar {
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+  margin: 8px 16px 8px 8px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 16px 16px 16px;
+  color: #374151;  
+}
+
+.attendance__container {
+  min-height: 100vh;
+  background-color:#f7f4f6;
+  padding: 16px;
+  z-index: 0;
+}
+
+.profile__container {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  border-radius: 16px;
+}
+
+.profile__container > * {
+  margin: 4px 0;
+}
+
+.profile__name {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.profile__role {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a0a4a8;
+  border-radius: 4px;
+}
+
+.clock__container {
+  font-family: "Source Sans Pro";
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  margin-top: 16px;
+  z-index: 1;
+  background-color: white;
+  text-align: center;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.clock__container > * {
+  margin: 12px 16px;
+}
+
+.clock__container > button {
+  justify-content: center;
+  align-items: center;
+}
+
+.today__container {
+  padding: 8px;
+  background-color: white;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  border-radius: 16px 16px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.today__container > ul > h3 {
+  margin: 16px;
+}
+
+.today__container > ul > li {
+  font-family: "Source Sans Pro";
+  display: flex;
+  padding: 8px 16px;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  list-style: none;
+}
+
+.today__container > ul > li:nth-child(2) {
+  border-top: 1px solid lightgray;
+}
+
+.today__container > ul > li > .status {
+  flex: 1;
+}
