@@ -6,8 +6,8 @@ button {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #22577A;
-  margin: 8px;
+  background-color: #0087c8;
+  font-weight: 700;
 }
 
 button:hover {
@@ -15,9 +15,9 @@ button:hover {
 }
 
 .secondary {
-  border: 1px solid #22577A;
+  border: 1px solid #0087c8;
   background-color: whitesmoke;
-  color: #22577A;
+  color: #0087c8;
 }
 
 .secondary:hover {
@@ -41,4 +41,8 @@ button:hover {
 
 .disabled:hover {
   background-color: #9d9d9d;
+}
+
+.block {
+  width: 100%;
 }

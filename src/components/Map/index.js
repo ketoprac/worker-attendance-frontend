@@ -3,9 +3,10 @@ import GoogleMapReact from "google-map-react";
 import styles from "./Map.module.css";
 
 const Map = ({ location, zoomLevel }) => {
-  const API_KEY = "AIzaSyB6qSS1b2hTsQEpT-yNXV93X5GtJzoCspM";
+  // const API_KEY = "AIzaSyB6qSS1b2hTsQEpT-yNXV93X5GtJzoCspM";
+  const API_KEY = "AIzaSyDgofvac-Kp97jLBU7pJZVLkXqL0nIZJo8";
   const officeLocation = {
-    address: '1600 Amphitheatre Parkway, Mountain View, california.',
+    address: '1600 Amphitheatre Parkway, Mountain View, California.',
     lat: -6.184852814540864, 
     lng: 106.82298469655133
   }
@@ -16,7 +17,7 @@ const Map = ({ location, zoomLevel }) => {
 
       <div className={styles.googleMap}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyB6qSS1b2hTsQEpT-yNXV93X5GtJzoCspM' }}
+        bootstrapURLKeys={{ key: API_KEY }}
         defaultCenter={officeLocation}
         defaultZoom={zoomLevel}
       >

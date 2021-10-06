@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "./App.module.css";
-import Button from "./components/Button";
-import Avatar from "./assets/images/avatar.jpg";
-import Navbar from "./components/Navbar";
+import styles from "./MainApp.module.css";
+import Button from "../../components/Button";
+import Avatar from "../../assets/images/avatar.jpg";
+import Navbar from "../../components/Navbar";
 import Clock from "react-live-clock";
 import "moment-timezone";
 import "react-moment";
-import useGeoLocation from "./hooks/useGeoLocation";
-import Map from "./components/Map";
+import useGeoLocation from "../../hooks/useGeoLocation";
+import Map from "../../components/Map";
 
 function App() {
   const [attendances, setAttendances] = useState([]);

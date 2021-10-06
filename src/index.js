@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Login from './components/Login';
-import AttendanceMap from './components/AttendanceMap';
+import Login from './pages/Login';
+import AttendanceMap from './pages/AttendanceMap';
 
 ReactDOM.render(
   <React.StrictMode>
