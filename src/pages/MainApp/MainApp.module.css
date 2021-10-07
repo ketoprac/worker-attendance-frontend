@@ -71,7 +71,7 @@
   background-color: white;
   margin-top: 16px;
   margin-bottom: 8px;
-  border-radius: 16px 16px 0 0;
+  border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
@@ -90,6 +90,10 @@
 
 .today__container > ul > li:nth-child(2) {
   border-top: 1px solid lightgray;
+}
+
+.today__container > ul > li:nth-last-child(1) {
+  border-bottom: none;
 }
 
 .today__container > ul > li > .status {

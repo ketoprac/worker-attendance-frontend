@@ -46,3 +46,7 @@ button:hover {
 .block {
   width: 100%;
 }
+
+.right {
+  text-align: right;
+}

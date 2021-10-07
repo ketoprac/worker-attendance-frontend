@@ -9,12 +9,13 @@ import "moment-timezone";
 import "react-moment";
 import useGeoLocation from "../../hooks/useGeoLocation";
 import Map from "../../components/Map";
+import { Link } from "react-router-dom";
 
 function App() {
   const [attendances, setAttendances] = useState([]);
   const location = useGeoLocation();
   const URL =
-    "https://worker-attendance-app-default-rtdb.asia-southeast1.firebasedatabase.app/absence.json";
+    "https://worker-attendance-app-default-rtdb.asia-southeast1.firebasedatabase.app/attendance.json";
 
   useEffect(() => {
     async function fetchAttendances() {
@@ -29,7 +30,7 @@ function App() {
     }
 
     fetchAttendances();
-  }, []);
+  }, [attendances]);
 
   const [clock, setClock] = useState(false);
 
@@ -73,7 +74,7 @@ function App() {
       .post(URL, { 
         nik: "12345678",
         nama: "John Doe",
-        status: "Clock in",
+        clock: true,
         day,
         hours,
       })
@@ -83,8 +84,7 @@ function App() {
       .catch(function (error) {
         console.log(error);
       });
-
-    setClock(true);
+      setClock(true);
   };
 
   const clockOut = () => {
@@ -92,7 +92,7 @@ function App() {
       .post(URL, {
         nik: "12345678",
         nama: "John Doe",
-        status: "Clock out",
+        clock: false,
         day,
         hours,
       })
@@ -131,11 +131,13 @@ function App() {
             <h3>09:00 AM - 05:00 PM</h3>
             <p>Office Location</p>
             <p>Jl. MH. Thamrin No. 69, Jakarta Selatan, DKI Jakarta</p>
+            <Link to="/attendance">
             <Button
-              onClick={() => clockIn()}
+              // onClick={() => clockIn()}
               variant={clock ? "disabled" : null}
               title="Clock in"
             />
+            </Link>
             <Button
               onClick={() => clockOut()}
               variant={clock ? null : "disabled"}
@@ -145,12 +147,12 @@ function App() {
           <div className={styles.today__container}>
             <ul>
               <h3>Attendance History</h3>
-              {Object.values(attendances).map((attendance, index) => (
+              {attendances ? (Object.values(attendances).map((attendance, index) => (
                 <li key={index}>
-                  <h4 className={styles.status}>{attendance.status}</h4>
+                  <h4 className={styles.status}>{attendance.clock ? "Clock In" : "Clock Out"}</h4>
                   <h4>{attendance.day} {attendance.hours}</h4>
                 </li>
-              ))}
+              ))) : <p>No Data Available</p>}
             </ul>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { useEffect } from "react/cjs/react.development";
 import Button from "../../components/Button";
 import Navbar from "../../components/Navbar";
@@ -9,6 +10,7 @@ const Login = () => {
   const URL = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDkYks3_91K6hO7V25KevrrMAMeewj3pbM"
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ const Login = () => {
       data: {
         email,
         password,
-        returnSecure: true,
+        returnSecureToken: true,
       }
     });
 
@@ -28,8 +30,12 @@ const Login = () => {
       await window.localStorage.setItem("token", JSON.stringify(res.data.idToken));
     }
 
-
+    setRedirect(true);
     console.log(res);
+  }
+
+  if (redirect) {
+    return <Redirect to="/" />
   }
 
   return (
@@ -45,7 +51,7 @@ const Login = () => {
             <label for="password">Password: </label>
             <input onChange={(e) => setPassword(e.target.value)} name="password" type="password" />
           </div>
-          <Button onClick={submit} variant="primary" title="Login" />
+          <Button onClick={submit} variant="primary block" title="Login" />
           <Button variant="tertiary" title="Forgot password?" />
         </form>
       </div>
