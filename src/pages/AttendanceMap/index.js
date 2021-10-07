@@ -12,9 +12,9 @@ const AttendanceMap = () => {
   const [allow, setAllow] = useState(false);
   const [distance, setDistance] = useState();
   const officeLocation = {
-    lat: -6.399494, 
-    lng: 106.821583,
-    address: "Jl. Griya Lembah Timur 2 No.10, RW.24, Abadijaya, Sukmajaya, Depok City, West Java 16417"
+    lat: -6.1928479398993845, 
+    lng: 106.82301142544476, 
+    address: "Jl. MH Thamrin No. 12, Gondangdia, Menteng, Jakarta Pusat"
   }
   const API_KEY = "AIzaSyDgofvac-Kp97jLBU7pJZVLkXqL0nIZJo8";
   const location = useGeoLocation();
@@ -38,7 +38,6 @@ const AttendanceMap = () => {
       try {
         const res = await axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${officeLocation.lat + "," + officeLocation.lng}&destinations=${location.coordinates.lat + "," + location.coordinates.lng}&key=${API_KEY}`);
         // console.log(res.data);
-        console.log(res.data.rows[0].elements[0].distance.value);
         const data = res.data.rows[0].elements[0].distance.value;
         setDistance(data);
       } catch (err) {

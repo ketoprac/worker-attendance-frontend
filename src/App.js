@@ -11,8 +11,8 @@ function App() {
       <Navbar />
 
       <Router>
-        <Route path="/" exact component={MainApp} />
-        <Route path="/login" component={Login} />
+        <Route path="/" exact component={Login} />
+        <Route path="/main" component={MainApp} />
         <Route path="/attendance" component={AttendanceMap} />
       </Router>
     </>
