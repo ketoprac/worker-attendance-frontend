@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const AttendanceMap = () => {
   const [currentLocation, setCurrentLocation] = useState("");
   const [allow, setAllow] = useState(false);
-  const [distance, setDistance] = useState("");
+  const [distance, setDistance] = useState();
   const officeLocation = {
     lat: -6.399494, 
     lng: 106.821583,
@@ -26,7 +26,7 @@ const AttendanceMap = () => {
       try {
         // const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=-6.4024844, 106.7942405&key=${API_KEY}`);
         const res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coordinates.lat + " " + location.coordinates.lng}&key=${API_KEY}`);
-        console.log(res.data.results[0].formatted_address);
+        // console.log(res.data.results[0].formatted_address);
         const address = res.data.results[1].formatted_address;
         setCurrentLocation(address);
       } catch (err) {
@@ -34,19 +34,22 @@ const AttendanceMap = () => {
       }
     }
 
-    // async function checkDistance() {
-    //   try {
-    //     const res = await axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${officeLocation.lat + "," + officeLocation.lng}&destinations=${location.coordinates.lat + "," + location.coordinates.lng}&key=${API_KEY}`);
-    //     console.log(res)
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
+    async function checkDistance() {
+      try {
+        const res = await axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${officeLocation.lat + "," + officeLocation.lng}&destinations=${location.coordinates.lat + "," + location.coordinates.lng}&key=${API_KEY}`);
+        // console.log(res.data);
+        console.log(res.data.rows[0].elements[0].distance.value);
+        const data = res.data.rows[0].elements[0].distance.value;
+        setDistance(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
 
-    console.log(currentLocation);
+    // console.log(currentLocation);
     fetchLocation();
-    // checkDistance();
+    checkDistance();
 
   }, [location])
 
@@ -118,9 +121,9 @@ const AttendanceMap = () => {
         <p>{location.loaded ? Object.values(location.coordinates.lat + ", " + location.coordinates.lng) : "Location data not available yet"}</p>
       </div>
       <div className={styles.map__container}>
-        <p>You are in Office Area, now you are allowed to Clock In</p>
+        {distance <= 100 ? (<p>You are in Office Area, now you are allowed to Clock In</p>) : (<p>You are outside Office Area, not allowed to Clock In</p>)}
       </div>
-        <Link exact to="/" ><Button onClick={() => clockIn()} variant="primary block" title="Clock In" /></Link>
+        <Link exact to="/" ><Button onClick={() => clockIn()} variant={distance <= 100 ? "primary block" : "disabled block"} title="Clock In" /></Link>
       </div>
     </div>
     </>
